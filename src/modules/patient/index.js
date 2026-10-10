@@ -1,0 +1,1 @@
+export {default as patientcontroller} from './patient.controller.js';
