@@ -1,2 +1,6 @@
+export * from './user.model.js'
 export * from './patient.model.js'
 export * from './doctor.model.js'
+export * from './staff.model.js'
+export * from './department.model.js'
+export * from './accessCode.model.js'
