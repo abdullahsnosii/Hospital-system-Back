@@ -3,7 +3,10 @@ dns.setServers(["8.8.8.8", "1.1.1.1"])
 import express from "express"
 import cors from "cors"
 import helmet from "helmet"
-import { authenticationcontroller } from "./modules/index.js"
+import {
+    authenticationcontroller,
+    departmentcontroller
+} from "./modules/index.js"
 import { globalErrorHandler } from "./middleware/index.js"
 import { bootstrapDB } from "./DB/connectionDB.js"
 import { generateLimiter } from "./common/utils/index.js"
@@ -22,6 +25,7 @@ app.use(
 app.all("/", (req, res) => res.status(200).send({ message: "Welcome to our API" }))
 
 app.use("/auth", authenticationcontroller)
+app.use("/departments", departmentcontroller)
 // app.use('/patient', patientcontroller);   // نفعّلهم لما نوصل لهم
 // app.use('/doctor', doctorcontroller);
 
