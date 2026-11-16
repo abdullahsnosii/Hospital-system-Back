@@ -1,13 +1,14 @@
 import mongoose from 'mongoose'
 import { DB_NAME, DB_URI } from '../config.js'
-import { AccessCodeModel, DepartmentModel, DoctorModel, PatientModel, StaffModel, UserModel } from './model/index.js'
+import './model/index.js'
 
 export const bootstrapDB = async (app, port) => {
   try {
+    mongoose.set('autoIndex', false)
     await mongoose.connect(DB_URI, { serverSelectionTimeoutMS: 5000, dbName: DB_NAME || undefined })
     console.log('Database connected successfully')
-    // بيتأكد إن الـ unique / sparse indexes اتعملت
-    await Promise.all([UserModel, PatientModel, DoctorModel, StaffModel, DepartmentModel, AccessCodeModel].map(model => model.syncIndexes()))
+    // Index synchronization is intentionally not run at startup: the Atlas application user
+    // may not have createIndex/dropIndex privileges. Deploy schema indexes separately.
     app.listen(port, () => { console.log(`Server is running on port ${port}`); });
   } catch (error) {
     console.log('Database connection failed', error)

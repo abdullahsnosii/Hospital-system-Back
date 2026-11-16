@@ -1,3 +1,10 @@
-export * from './patient/index.js';
-export * from './doctor/index.js';
-export * from './authentication/index.js';
+export { default as authenticationcontroller } from './authentication/authentication.controller.js'
+export { default as patientcontroller } from './patient/patient.controller.js'
+export { default as doctorcontroller } from './doctor/doctor.controller.js'
+export { default as departmentcontroller } from './department/department.controller.js'
+export { default as schedulecontroller } from './doctor/schedule.controller.js'
+export { default as appointmentcontroller } from './appointment/appointment.controller.js'
+export { default as medicalhistorycontroller } from './medical-history/medical-history.controller.js'
+export { default as invoicecontroller } from './invoice/invoice.controller.js'
+export { default as notificationcontroller } from './notification/notification.controller.js'
+export { default as admincontroller } from './admin/admin.controller.js'

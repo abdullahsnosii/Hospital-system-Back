@@ -6,7 +6,9 @@
   "scripts": {
     "start:dev": "node --watch ./src/main.js",
     "start:prod": "NODE_ENV=production node ./src/main.js",
-    "seed:codes": "node ./scripts/seed-access-codes.js"
+    "seed:codes": "node ./scripts/seed-access-codes.js",
+    "seed:departments": "node ./scripts/seed-departments.js",
+    "db:indexes": "node ./scripts/create-indexes.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,3 @@
+import mongoose from 'mongoose'
+const medicalHistorySchema = new mongoose.Schema({ patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true, index: true }, doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', required: true }, appointmentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' }, diagnosis: { type: String, trim: true, maxlength: 500 }, notes: { type: String, trim: true, maxlength: 5000, required: true }, prescriptions: [{ type: String, trim: true, maxlength: 500 }] }, { timestamps: true })
+export const MedicalHistoryModel = mongoose.models.MedicalHistory || mongoose.model('MedicalHistory', medicalHistorySchema)

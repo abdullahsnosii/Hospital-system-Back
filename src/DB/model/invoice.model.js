@@ -1,0 +1,4 @@
+import mongoose from 'mongoose'
+import { INVOICE_STATUSES, InvoiceStatus } from '../../common/enum/invoice.enum.js'
+const invoiceSchema = new mongoose.Schema({ appointmentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment', required: true, unique: true }, patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true, index: true }, doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', required: true }, amount: { type: Number, required: true, min: 0 }, amountUnit: { type: String, default: 'piastre' }, currency: { type: String, default: 'EGP' }, status: { type: String, enum: INVOICE_STATUSES, default: InvoiceStatus.UNPAID }, paidAt: Date }, { timestamps: true })
+export const InvoiceModel = mongoose.models.Invoice || mongoose.model('Invoice', invoiceSchema)
